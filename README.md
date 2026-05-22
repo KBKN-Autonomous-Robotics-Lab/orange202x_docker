@@ -7,7 +7,7 @@ Distribution: `ROS2 Humble Hawksbill`
 ## Build from Dockerfile (recommendation)🔧
 ```
 $ git clone https://github.com/KBKN-Autonomous-Robotics-Lab/orange202x_docker.git
-$ cd orange20x5_docker
+$ cd orange202x_docker
 $ bash build.sh
 $ bash livox_runLite.sh
 ```
