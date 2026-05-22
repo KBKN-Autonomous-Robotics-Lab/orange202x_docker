@@ -1,7 +1,13 @@
-FROM ubuntu:jammy-20230522
+#FROM ubuntu:jammy-20230522
+FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04
 
 ARG TARGETPLATFORM
-LABEL maintainer="Alpaca-zip<zip.lottestr@gmail.com>"
+LABEL maintainer="Takamori-Kasai<yuhei.takamori.3i@stu.hosei.ac.jp><tenten31569@icloud.com>"
+
+# CUDA環境変数
+ENV CUDA_HOME=/usr/local/cuda
+ENV PATH=${CUDA_HOME}/bin:${PATH}
+ENV LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
 
 SHELL ["/bin/bash", "-c"]
 
@@ -58,7 +64,7 @@ RUN sed -i 's/enabled=1/enabled=0/g' /etc/default/apport
 RUN rm /etc/apt/apt.conf.d/docker-clean
 
 # Install ROS
-ENV ROS_DISTRO humble
+ENV ROS_DISTRO=humble
 # desktop or ros-base
 ARG INSTALL_PACKAGE=desktop
 
@@ -155,5 +161,5 @@ COPY ./entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT [ "/bin/bash", "-c", "/entrypoint.sh" ]
 
-ENV USER ubuntu
-ENV PASSWD ubuntu
+ENV USER=ubuntu
+ENV PASSWD=ubuntu

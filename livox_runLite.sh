@@ -4,7 +4,9 @@ sudo docker run \
     --net host \
     --shm-size=512m \
     --security-opt seccomp=unconfined \
-    kbkn202x/orange2025:latest
+    --gpus all \
+    -e NVIDIA_DRIVER_CAPABILITIES=all \
+    kbkn202x/orange2026:latest
     
 #   -e RESOLUTION=1920x1080
 #   -p 6080:80
