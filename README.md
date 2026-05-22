@@ -1,4 +1,4 @@
-# orange2025_docker
+# orange202x_docker
 
 orange2025: https://github.com/KBKN-Autonomous-Robotics-Lab/orange2025
 
@@ -6,8 +6,8 @@ Distribution: `ROS2 Humble Hawksbill`
 
 ## Build from Dockerfile (recommendation)🔧
 ```
-$ git clone https://github.com/KBKN-Autonomous-Robotics-Lab/orange2025_docker.git
-$ cd orange2025_docker
+$ git clone https://github.com/KBKN-Autonomous-Robotics-Lab/orange202x_docker.git
+$ cd orange20x5_docker
 $ bash build.sh
 $ bash livox_runLite.sh
 ```
