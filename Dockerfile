@@ -1,5 +1,5 @@
 #FROM ubuntu:jammy-20230522
-FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04
+FROM nvidia/cuda:12.2.2-cudnn8-devel-ubuntu22.04
 
 ARG TARGETPLATFORM
 LABEL maintainer="Takamori-Kasai<yuhei.takamori.3i@stu.hosei.ac.jp><tenten31569@icloud.com>"
