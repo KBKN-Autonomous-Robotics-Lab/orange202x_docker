@@ -4,6 +4,9 @@ orange2025: https://github.com/KBKN-Autonomous-Robotics-Lab/orange2025
 
 Distribution: `ROS2 Humble Hawksbill`
 
+イメージ作成前に以下でGPUやCUDAの設定確認をしてください
+https://github.com/takamooori/manual_for_myself/blob/main/docker-nvidia-setup.md
+
 ## Build from Dockerfile (recommendation)🔧
 ```
 $ git clone https://github.com/KBKN-Autonomous-Robotics-Lab/orange2025_docker.git
