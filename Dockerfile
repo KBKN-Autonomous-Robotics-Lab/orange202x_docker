@@ -114,9 +114,9 @@ RUN useradd --create-home --shell /bin/bash --user-group --groups adm,sudo ubunt
 # Clone and build orange2025 package as 'ubuntu' user
 USER ubuntu
 WORKDIR /home/ubuntu/ros2_ws/src
-RUN git clone https://github.com/KBKN-Autonomous-Robotics-Lab/orange2025.git && \
+RUN git clone https://github.com/KBKN-Autonomous-Robotics-Lab/orange2026A.git && \
     wstool init . && \
-    wstool merge orange2025/orange_ros2.rosinstall && wstool update && \
+    wstool merge orange2026A/orange_ros2.rosinstall && wstool update && \
     wstool merge icm_20948/icm_20948.rosinstall && wstool update
 
 # Clone packages related to livox and setup ip address
