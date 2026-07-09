@@ -64,8 +64,10 @@ ARG INSTALL_PACKAGE=desktop
 
 RUN apt-get update -q && \
     apt-get install -y curl gnupg2 lsb-release && \
-    curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg && \
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/ros2.list > /dev/null && \
+    curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key \
+      | gpg --dearmor -o /usr/share/keyrings/ros-archive-keyring.gpg && \
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" \
+      > /etc/apt/sources.list.d/ros2.list && \
     apt-get update -q && \
     apt-get install -y ros-${ROS_DISTRO}-${INSTALL_PACKAGE} \
     python3-argcomplete \
@@ -111,7 +113,7 @@ RUN useradd --create-home --shell /bin/bash --user-group --groups adm,sudo ubunt
     mkdir -p /home/ubuntu/ros2_ws/src && \
     chown -R ubuntu:ubuntu /home
 
-# Clone and build orange2025 package as 'ubuntu' user
+# Clone and build orange2026 package as 'ubuntu' user
 USER ubuntu
 WORKDIR /home/ubuntu/ros2_ws/src
 RUN git clone https://github.com/KBKN-Autonomous-Robotics-Lab/orange2026A.git && \
@@ -123,8 +125,8 @@ RUN git clone https://github.com/KBKN-Autonomous-Robotics-Lab/orange2026A.git &&
 RUN mkdir livox && cd livox && \
     git clone https://github.com/Ericsii/livox_ros_driver2.git && \
     git clone https://github.com/KBKN-Autonomous-Robotics-Lab/livox_to_pointcloud2.git && \
-    sed -i "s/192.168.1.5/192.168.3.1/g" ~/ros2_ws/src/livox/livox_ros_driver2/config/MID360_config.json && \
-    sed -i "s/192.168.1.12/192.168.3.201/g" ~/ros2_ws/src/livox/livox_ros_driver2/config/MID360_config.json 
+    sed -i "s/192.168.1.5/192.168.1.1/g" ~/ros2_ws/src/livox/livox_ros_driver2/config/MID360_config.json && \
+    sed -i "s/192.168.1.12/192.168.1.201/g" ~/ros2_ws/src/livox/livox_ros_driver2/config/MID360_config.json 
 
 # Switch to 'root' user for rosdep install
 USER root
