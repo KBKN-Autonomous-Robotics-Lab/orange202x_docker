@@ -1,1 +1,1 @@
-docker build -t kbkn202x/orange2026A:latest .
+docker build -t kbkn202x/orange2026a:latest .
