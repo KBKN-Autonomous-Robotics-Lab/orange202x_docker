@@ -1,13 +1,12 @@
 sudo docker run \
     --ipc host \
     --net host \
-    --shm-size=512m \
     --security-opt seccomp=unconfined \
     --device /dev/ZLAC8015D:/dev/ZLAC8015D:mwr \
-    --device /dev/sensors/estop:/dev/sensors/estop:mwr \
     --device /dev/input/js0:/dev/input/js0:mwr \
     --device /dev/sensors/GNSS_UM982:/dev/sensors/GNSS_UM982:mwr \
-    --device /dev/webcam1:/dev/webcam1:mwr \
+    --device /dev/sensors/webcam:/dev/sensors/webcam:mwr \
+    --device /dev/sensors/spresense_imu:/dev/sensors/spresense_imu:mwr \
     kbkn202x/orange2026a:latest
 	
 #   -e RESOLUTION=1920x1080
