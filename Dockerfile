@@ -126,28 +126,25 @@ RUN git clone https://github.com/KBKN-Autonomous-Robotics-Lab/zlac8015d_can_brin
 
 # Clone packages related to livox and setup ip address
 RUN mkdir livox && cd livox && \
-    git clone https://github.com/Ericsii/livox_ros_driver2.git && \
-    git clone https://github.com/KBKN-Autonomous-Robotics-Lab/livox_to_pointcloud2.git && \
-    sed -i "s/192.168.1.5/192.168.3.1/g" ~/ros2_ws/src/livox/livox_ros_driver2/config/MID360_config.json && \
-    sed -i "s/192.168.1.12/192.168.3.201/g" ~/ros2_ws/src/livox/livox_ros_driver2/config/MID360_config.json 
+   git clone https://github.com/Ericsii/livox_ros_driver2.git && \
+   git clone https://github.com/KBKN-Autonomous-Robotics-Lab/livox_to_pointcloud2.git && \
+   sed -i "s/192.168.1.5/192.168.3.1/g" ~/ros2_ws/src/livox/livox_ros_driver2/config/MID360_config.json && \
+   sed -i "s/192.168.1.12/192.168.3.201/g" ~/ros2_ws/src/livox/livox_ros_driver2/config/MID360_config.json
 
-# Switch to 'root' user for rosdep install
+# Install dependencies with rosdep
 USER root
-RUN apt-get update && apt-get install -y curl ca-certificates && \
-    curl -L -o /tmp/ros2-apt-source.deb \
-    "https://github.com/ros-infrastructure/ros-apt-source/releases/latest/download/ros2-apt-source_jammy_all.deb" && \
-    dpkg -i /tmp/ros2-apt-source.deb && \
-    rm /tmp/ros2-apt-source.deb
-
 
 RUN apt-get update && \
-    rosdep update && \
-    rosdep install -r -y -i --from-paths /home/ubuntu/ros2_ws/src --rosdistro=${ROS_DISTRO} && \
-    rm -rf /var/lib/apt/lists/*
+   rosdep update && \
+   rosdep install -r -y -i \
+     --from-paths /home/ubuntu/ros2_ws/src \
+     --rosdistro=${ROS_DISTRO} && \
+   rm -rf /var/lib/apt/lists/*
 
 # Build
 USER ubuntu
 WORKDIR /home/ubuntu/ros2_ws
+
 RUN /bin/bash -c "source /opt/ros/humble/setup.bash; colcon build"
 
 # Update .bashrc with custom aliases
