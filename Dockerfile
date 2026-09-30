@@ -133,8 +133,6 @@ RUN mkdir livox && cd livox && \
 
 # Switch to 'root' user for rosdep install
 USER root
-USER root
-
 RUN apt-get update && apt-get install -y curl ca-certificates && \
     curl -L -o /tmp/ros2-apt-source.deb \
     "https://github.com/ros-infrastructure/ros-apt-source/releases/latest/download/ros2-apt-source_jammy_all.deb" && \
