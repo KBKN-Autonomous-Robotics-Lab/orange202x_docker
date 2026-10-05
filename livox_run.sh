@@ -8,7 +8,7 @@ sudo docker run \
     --device /dev/input/js0:/dev/input/js0:mwr \
     --device /dev/sensors/GNSS_UM982:/dev/sensors/GNSS_UM982:mwr \
     --device /dev/webcam1:/dev/webcam1:mwr \
-    kbkn202x/orange2025:latest
+    kbkn202x/orange2026B:latest
 	
 #   -e RESOLUTION=1920x1080
 #   js0;DualSense Controller
