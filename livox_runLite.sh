@@ -4,7 +4,7 @@ sudo docker run \
     --net host \
     --shm-size=512m \
     --security-opt seccomp=unconfined \
-    kbkn202x/orange2026B:latest
+    kbkn202x/orange2026:latest
     
 #   -e RESOLUTION=1920x1080
 #   -p 6080:80
